@@ -27,9 +27,6 @@ RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /node_modules
 
-# Run user as non privileged.
-USER pptruser
-
 WORKDIR /home/pptruser
 
 CMD ["google-chrome-unstable"]
