@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
 RUN yarn add puppeteer
 
 # Add pptr user.
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
+RUN groupadd -g 500 -r pptruser && useradd -u 500 -r -g pptruser -G audio,video pptruser \
     && mkdir -p /home/pptruser/Downloads \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /node_modules
