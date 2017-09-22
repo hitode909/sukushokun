@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors');
 const iPhone = devices['iPhone 6'];
-console.log(iPhone);
 
 (async () => {
   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
