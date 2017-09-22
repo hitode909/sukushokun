@@ -7,8 +7,8 @@ const iPhone = devices['iPhone 6'];
   for (var i = 2; i < process.argv.length; i+=2) {
     const uri = process.argv[i];
     const name = process.argv[i+1];
-    const pathPC = `data/${name}-pc.png`;
-    const pathSP = `data/${name}-sp.png`;
+    const pathPC = `Downloads/${name}-pc.png`;
+    const pathSP = `Downloads/${name}-sp.png`;
 
     let page = await browser.newPage();
     await page.setViewport({width: 1280, height: 800});
