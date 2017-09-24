@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y wget unzip --no-install-recommends \
 
 # Japanese font
 RUN mkdir /noto
-ADD https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip /noto
+RUN wget -q https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip -O /noto/NotoSansCJKjp-hinted.zip
 WORKDIR /noto
 RUN unzip NotoSansCJKjp-hinted.zip && \
     mkdir -p /usr/share/fonts/noto && \
