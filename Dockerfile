@@ -3,7 +3,7 @@ FROM node:8-slim
 # Install latest chrome dev package.
 # Note: this installs the necessary libs to make the bundled version of Chromium that Pupppeteer
 # installs, work.
-RUN apt-get update && apt-get install -y wget --no-install-recommends \
+RUN apt-get update && apt-get install -y wget unzip --no-install-recommends \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update \
@@ -17,6 +17,18 @@ RUN apt-get update && apt-get install -y wget --no-install-recommends \
 # you'll need to launch puppeteer with:
 #     browser.launch({executablePath: 'google-chrome-unstable'})
 # ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+
+# Japanese font
+RUN mkdir /noto
+ADD https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip /noto
+WORKDIR /noto
+RUN unzip NotoSansCJKjp-hinted.zip && \
+    mkdir -p /usr/share/fonts/noto && \
+    cp *.otf /usr/share/fonts/noto && \
+    chmod 644 -R /usr/share/fonts/noto/ && \
+    /usr/bin/fc-cache -fv
+WORKDIR /
+RUN rm -rf /noto
 
 # Install puppeteer so it's available in the container.
 RUN yarn add puppeteer
