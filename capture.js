@@ -7,6 +7,7 @@ const iPhone = devices['iPhone 6'];
   for (var i = 2; i < process.argv.length; i+=2) {
     const uri = process.argv[i];
     const name = process.argv[i+1];
+    console.log(`Downloading ${uri} as ${name}`);
     const pathPC = `Downloads/${name}-pc.png`;
     const pathSP = `Downloads/${name}-sp.png`;
 
