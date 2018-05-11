@@ -48,8 +48,6 @@ for (var i = 2; i < process.argv.length; i+=2) {
   });
 }
 
-console.dir(targets);
-
 (async () => {
   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
