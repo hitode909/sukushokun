@@ -49,6 +49,7 @@ for (var i = 2; i < process.argv.length; i+=2) {
 }
 
 (async () => {
+  console.log('Launching browser');
   const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
   for (const target of targets) {
@@ -62,6 +63,7 @@ for (var i = 2; i < process.argv.length; i+=2) {
   }
 
   try {
+    console.log('Closing browser');
     await browser.close();
   } catch(error) {
     console.dir(error);
